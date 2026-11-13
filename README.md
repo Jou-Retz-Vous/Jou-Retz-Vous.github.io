@@ -1,34 +1,70 @@
 # Jou'Retz-vous? — Link page
 
-Single static landing page (no build step) linking to Facebook, Instagram,
-and embedding the association's Google Calendar.
+Single static landing page (no build step) for the association
+**Jou'Retz-vous?**, live at:
 
-## Before publishing
+➡️ **https://jou-retz-vous.github.io/**
 
-1. Add your real logo/avatar as `assets/logo.png` (square, e.g. 256x256) and
-   a favicon as `assets/favicon.png`. The page still works if these are
-   missing (the `<img>` just hides itself), but add them for branding.
-2. Double-check the calendar's sharing settings: in Google Calendar settings
-   for this calendar → **Access permissions** → enable **"Make available
-   to public"**, otherwise the embed will show "This content is not
-   available" to visitors.
+It links to Facebook and Instagram, embeds the association's Google
+Calendar, and includes short "À propos" and "Contact" sections.
 
-## Publish on GitHub Pages (org: Jou-Retz-Vous)
+## Structure
 
-1. Create a new repo in the `Jou-Retz-Vous` org named **exactly**
-   `Jou-Retz-Vous.github.io`.
-2. From this folder:
-   ```bash
-   git remote add origin git@github.com:Jou-Retz-Vous/Jou-Retz-Vous.github.io.git
-   git add -A
-   git commit -m "Initial Jou'Retz-vous? link page"
-   git branch -M main
-   git push -u origin main
-   ```
-3. In the repo settings → **Pages**, set source to the `main` branch,
-   root folder (`/`). It usually auto-detects for a `*.github.io` repo.
-4. Site goes live at **https://jou-retz-vous.github.io/** within a minute
-   or two.
+```
+.
+├── index.html   — all page content and section markup
+├── style.css    — layout, colors, responsive styling
+├── assets/
+│   ├── logo.png     — full association logo (shown in the header)
+│   └── favicon.png  — tight die-icon crop used as browser favicon
+└── README.md
+```
+
+## Content & features
+
+- **Facebook / Instagram**: direct links, open in a new tab, official
+  brand colors kept for instant recognition.
+- **Calendar**: embedded via `calendar.google.com/calendar/embed?src=...`
+  (agenda view, `Europe/Paris` timezone), plus a "+ Ajouter à mon Google
+  Calendar" subscribe link using the `newembed` URL.
+  ⚠️ The calendar must have **public access** enabled in its Google
+  Calendar sharing settings, otherwise the embed shows "This content is
+  not available" to visitors.
+- **À propos**: short description of the association, editable directly
+  in `index.html` under `id="about"`.
+- **Contact**: a "Nous écrire par e-mail" button. The address is **not**
+  written as a literal string in the HTML — it's assembled by a small
+  inline script at page-load time (see the bottom of `index.html`) as a
+  basic deterrent against simple scrapers. To change the address, edit
+  the `user` / `domain` variables in that script.
+- **Color palette**: extracted from the logo artwork — navy `#142d54`,
+  blue `#094c74`, teal `#1c8492`, green `#71992e`, orange `#e4701e`.
+  Defined as CSS variables at the top of `style.css`.
+
+## Making changes
+
+This is plain HTML/CSS — edit the files directly and push, no build step:
+
+```bash
+git add -A
+git commit -m "Describe the change"
+git push origin main
+```
+
+GitHub Pages redeploys automatically within a minute or two. The
+stylesheet is cache-busted via a `?v=N` query string on the `<link>` tag
+in `index.html` (`style.css?v=2`); **bump that number** whenever you edit
+`style.css` so returning visitors' browsers don't serve a stale cached
+copy (browsers may cache it for up to `max-age=600`, i.e. 10 minutes).
+
+## Hosting setup (already done, for reference)
+
+- Repo: `Jou-Retz-Vous/Jou-Retz-Vous.github.io` — the name must match
+  this exactly for GitHub Pages to serve it at the root `*.github.io`
+  domain (any other repo name would instead serve at
+  `jou-retz-vous.github.io/<repo-name>/`).
+- GitHub → repo **Settings → Pages** → source: branch `main`, folder
+  `/ (root)`.
 
 ## Later: custom domain (optional)
 
