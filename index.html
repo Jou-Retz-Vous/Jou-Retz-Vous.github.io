@@ -15,7 +15,7 @@
 <meta name="twitter:card" content="summary" />
 
 <link rel="icon" href="assets/favicon.png" type="image/png" />
-<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="style.css?v=2" />
 </head>
 <body>
 
@@ -24,6 +24,11 @@
       <img class="logo" src="assets/logo.png" alt="Logo Jou'Retz-vous?" onerror="this.style.display='none'" />
       <h1>Jou'Retz-vous&nbsp;?</h1>
       <p class="tagline">Association — retrouvez-nous ici</p>
+      <nav class="quicknav" aria-label="Navigation rapide">
+        <a href="#about">À propos</a>
+        <span aria-hidden="true">·</span>
+        <a href="#contact">Contact</a>
+      </nav>
     </header>
 
     <section class="links" aria-label="Réseaux sociaux">
@@ -58,11 +63,43 @@
       </a>
     </section>
 
+    <section class="about" id="about" aria-label="À propos">
+      <h2>À propos</h2>
+      <p>
+        Jou'Retz-vous&nbsp;? est une association de jeux et de convivialité
+        basée à Saint-Père-en-Retz. Nous organisons des soirées et after-works
+        jeux de société ouverts à toutes et tous, débutants comme passionnés,
+        dans une ambiance détendue et bienveillante.
+      </p>
+    </section>
+
+    <section class="contact" id="contact" aria-label="Contact">
+      <h2>Contact</h2>
+      <p>Une question, une envie de nous rejoindre ? Écrivez-nous&nbsp;!</p>
+      <a class="link-btn contact-btn" id="contact-link" href="#" rel="nofollow">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 2v.01L12 12 4 6.01V6h16ZM4 18V8.24l7.46 5.6a1 1 0 0 0 1.08 0L20 8.24V18H4Z"/></svg>
+        <span>Nous écrire par e-mail</span>
+      </a>
+    </section>
+
     <footer class="footer">
       <p>© <span id="year"></span> Jou'Retz-vous?</p>
     </footer>
   </main>
 
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Build the mailto link at runtime so the plain address never appears
+    // as a literal string in the page source (basic anti-scraping measure).
+    (function () {
+      var user = 'jouretzvous';
+      var domain = 'gmail.com';
+      var link = document.getElementById('contact-link');
+      if (link) {
+        link.href = 'mailto:' + user + '@' + domain;
+      }
+    })();
+  </script>
 </body>
 </html>
