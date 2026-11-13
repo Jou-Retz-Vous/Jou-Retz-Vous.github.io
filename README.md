@@ -30,6 +30,12 @@ Calendar, and includes short "À propos" and "Contact" sections.
   ⚠️ The calendar must have **public access** enabled in its Google
   Calendar sharing settings, otherwise the embed shows "This content is
   not available" to visitors.
+  - The embed is lightly recolored via URL params: `color=%23EF6C00`
+    (closest match in Google's fixed ~24-color palette to our site
+    orange `#e4701e` — arbitrary hex is **not** supported, Google snaps
+    it to the nearest palette entry) and `bgcolor=%23ffffff`. Other
+    available toggles: `showTitle=0`, `showNav=0`, `showDate=0`,
+    `showPrint=0`, `showTabs=0`, `showCalendars=0`, `showTz=0`.
 - **À propos**: short description of the association, editable directly
   in `index.html` under `id="about"`.
 - **Contact**: a "Nous écrire par e-mail" button. The address is **not**
