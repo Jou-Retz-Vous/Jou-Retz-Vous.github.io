@@ -202,6 +202,10 @@ body {
   line-height: 1.5;
 }
 
+.brand-name {
+  color: var(--accent);
+}
+
 .contact p {
   margin: 0 0 0.9rem;
   text-align: center;
