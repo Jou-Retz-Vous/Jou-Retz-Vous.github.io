@@ -42,6 +42,13 @@ Calendar, and includes short "À propos" and "Contact" sections.
     Shared params: `bgcolor=%23ffffff`. Other available toggles:
     `showTitle=0`, `showNav=0`, `showDate=0`, `showPrint=0`,
     `showTabs=0`, `showCalendars=0`, `showTz=0`.
+  - These two colors are also defined as CSS variables
+    (`--cal1-color`, `--cal2-color` in `style.css`) and reused for the
+    small colored chip prefixing each subscribe link
+    (`.calendar-chip.cal1` / `.cal2`). ⚠️ The iframe `src` URL is a
+    separate domain and can't read CSS variables, so if you change
+    these colors, update **both** the CSS variables and the `color=`
+    values in the iframe URL to keep them in sync.
   - To add further calendars later, repeat another `src=...&color=...`
     pair inside the same iframe URL (each `color=` applies to the
     `src=` immediately preceding it), and add a matching subscribe

@@ -16,6 +16,12 @@
   --ig-start: #f58529;
   --ig-mid: #dd2a7b;
   --ig-end: #8134af;
+
+  /* Google Calendar embed colors — must match the `color=%23...` hex
+     used in the iframe `src` URL in index.html (that URL can't read CSS
+     variables, so keep both in sync manually if you change these). */
+  --cal1-color: #ef6c00; /* Sessions Jou'Retz-Vous */
+  --cal2-color: #009688; /* Évènements partenaires */
 }
 
 * { box-sizing: border-box; }
@@ -183,6 +189,9 @@ body {
   border-radius: 50%;
   flex-shrink: 0;
 }
+
+.calendar-chip.cal1 { background: var(--cal1-color); }
+.calendar-chip.cal2 { background: var(--cal2-color); }
 
 .subscribe-link:first-of-type {
   margin-top: 0.9rem;
