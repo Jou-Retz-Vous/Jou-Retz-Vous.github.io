@@ -27,7 +27,7 @@ Calendar, and includes short "À propos" and "Contact" sections.
 - **Calendar**: embedded via `calendar.google.com/calendar/embed?src=...`
   (agenda view, `Europe/Paris` timezone), merging **two** Google
   Calendars into one embed by repeating the `src=`/`color=` pair, plus
-  one "+ Ajouter « [nom du calendrier] » à mon Google Calendar" subscribe
+  one "+ Ajouter « [nom du calendrier] » à mon calendrier Google" subscribe
   link per calendar (using the `newembed` URL), labeled with each
   calendar's actual Google Calendar name ("Sessions Jou'Retz-Vous" and
   "Évènements partenaires").
