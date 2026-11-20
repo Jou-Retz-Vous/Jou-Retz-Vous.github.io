@@ -165,12 +165,16 @@ body {
 }
 
 .subscribe-link {
-  display: inline-block;
-  margin-top: 0.9rem;
+  display: block;
+  margin-top: 0.5rem;
   color: var(--accent);
   font-weight: 600;
   font-size: 0.9rem;
   text-decoration: underline;
+}
+
+.subscribe-link:first-of-type {
+  margin-top: 0.9rem;
 }
 
 .subscribe-link:hover {

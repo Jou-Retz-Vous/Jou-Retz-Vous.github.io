@@ -25,17 +25,25 @@ Calendar, and includes short "À propos" and "Contact" sections.
 - **Facebook / Instagram**: direct links, open in a new tab, official
   brand colors kept for instant recognition.
 - **Calendar**: embedded via `calendar.google.com/calendar/embed?src=...`
-  (agenda view, `Europe/Paris` timezone), plus a "+ Ajouter à mon Google
-  Calendar" subscribe link using the `newembed` URL.
-  ⚠️ The calendar must have **public access** enabled in its Google
-  Calendar sharing settings, otherwise the embed shows "This content is
-  not available" to visitors.
-  - The embed is lightly recolored via URL params: `color=%23EF6C00`
-    (closest match in Google's fixed ~24-color palette to our site
-    orange `#e4701e` — arbitrary hex is **not** supported, Google snaps
-    it to the nearest palette entry) and `bgcolor=%23ffffff`. Other
-    available toggles: `showTitle=0`, `showNav=0`, `showDate=0`,
-    `showPrint=0`, `showTabs=0`, `showCalendars=0`, `showTz=0`.
+  (agenda view, `Europe/Paris` timezone), merging **two** Google
+  Calendars into one embed by repeating the `src=`/`color=` pair, plus
+  one "+ Ajouter à mon Google Calendar" subscribe link per calendar
+  using the `newembed` URL.
+  ⚠️ Both calendars must have **public access** enabled in their
+  Google Calendar sharing settings, otherwise the embed shows "This
+  content is not available" to visitors.
+  - The embed is lightly recolored via URL params: first calendar
+    `color=%23EF6C00` (closest match in Google's fixed ~24-color
+    palette to our site orange `#e4701e`), second calendar
+    `color=%23009688` (teal, matching our site accent) — arbitrary hex
+    is **not** supported, Google snaps it to the nearest palette entry.
+    Shared params: `bgcolor=%23ffffff`. Other available toggles:
+    `showTitle=0`, `showNav=0`, `showDate=0`, `showPrint=0`,
+    `showTabs=0`, `showCalendars=0`, `showTz=0`.
+  - To add further calendars later, repeat another `src=...&color=...`
+    pair inside the same iframe URL (each `color=` applies to the
+    `src=` immediately preceding it), and add a matching subscribe
+    `<a>` link.
 - **À propos**: short description of the association, editable directly
   in `index.html` under `id="about"`.
 - **Contact**: a "Nous écrire par e-mail" button. The address is **not**
